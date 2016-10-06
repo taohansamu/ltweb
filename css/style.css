@@ -1,0 +1,87 @@
+#container {
+ padding-left: 150px;
+ position: relative;
+ left: 0;
+ width: 100%;
+}
+#menu {
+ position: fixed;
+ height: 100%;
+ background-color: black;
+ width: 200px;
+ left: 0;
+}
+#menu ul {
+ list-style-type: none;
+ padding: 0;
+ margin: 0;
+}
+#menu li {
+ line-height: 2.9em;
+ height: 2.9em;
+ color:blue;
+ position: relative;
+}
+#menu li a {
+ display: block;
+ color: #fff;
+ padding: 0 1em;
+ border-bottom: 1px solid #333;
+}
+#menu li:hover {
+ background-color: #FFA500;
+}
+.submenu1{
+	display: none;
+	position: absolute;
+	left: 200px;
+	top: 0px;
+	background: black;
+}
+#menu li:hover .submenu1{
+	display: block;
+}
+#content {
+ padding: 1em 8em;
+}
+#header,
+.call-to-action {
+ text-align: center;
+}
+#header{}
+#slogan {
+ color: black;
+ font-size: 10em;
+}
+.call-to-action {
+ padding: 1.5em 20%;
+ background: #EFEFEF;
+ border: 1px solid#E8E8E8;
+}
+.row {
+ overflow: auto;
+ margin: 1.5em auto;
+}
+.row {
+ overflow: auto;
+ margin: 1.5em auto;
+}
+.row .col {
+ float: left;
+ width: 31.3333%;
+ margin-right: 2.99%;
+}
+.row .col:last-child {
+ float: right;
+ margin-right: 0;
+}
+.row .col img {
+ float: left;
+ margin-right: 1em;
+}
+#footer {
+ font-size: 85%;
+ border-top: 1px solid #E6E6E6;
+ color: #838383;
+ padding: 1em 3em;
+}
