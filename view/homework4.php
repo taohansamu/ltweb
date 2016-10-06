@@ -1,9 +1,9 @@
 <?php 
 include("../layout/header.php");
-include("../php/function.php");
- ?>
-<div id="content">
-<?php
+$values = array('name' => 'Buzz Lightyear',
+ 'email_address' => 'buzz@starcommand.gal',
+'age' => 32,
+'smarts' => 'some');
 function user_sort($a, $b) {
  // smarts is all-important, so sort it first
  if($b == 'smarts') {
@@ -14,22 +14,47 @@ function user_sort($a, $b) {
  }
  return ($a == $b) ? 0 : (($a < $b) ? -1 : 1);
 }
-$values = array('name' => 'Buzz Lightyear',
- 'email_address' => 'buzz@starcommand.gal',
-'age' => 32,
-'smarts' => 'some');
-if($_POST['submitted']) {
- if($sort_type == 'usort' || $sort_type == 'uksort' || $sort_type == 'uasort') {
- $sort_type($values, 'user_sort');
- }
- else {
- $sort_type($values);
- }
+if(isset($_POST['submitted'])) {
+	$sort_type=$_POST['sort_type'];
+	switch ($sort_type) {
+		case 'usort':
+			usort($values, 'user_sort');
+			break;
+		case 'uksort':
+			uksort($values, 'user_sort');
+			break;
+		case 'uasort':
+			uasort($values, 'user_sort');
+			break;
+		case 'sort':
+			sort($values);
+			break;
+		case 'ksort':
+			ksort($values);
+			break;
+		case 'rsort':
+			rsort($values);
+			break;
+		case 'krsort':
+			krsort($values);
+			break;
+		case 'asort':
+			asort($values);
+			break;
+		case 'arsort':
+			arsort($values);
+			break;
+		default:
+			echo "Please select sort type";
+			break;
+	}
 }
 ?>
-<form action="UserSorting.php" method="post">
+<div id="content">
+
+<form method="post">
 <p>
- <input type="radio" name="sort_type" value="sort" checked="checked" />
+ <input type="radio" name="sort_type" value="sort" />
  Standard sort<br />
  <input type="radio" name="sort_type" value="rsort" /> Reverse sort<br />
  <input type="radio" name="sort_type" value="usort" /> User-defined sort<br />
@@ -46,7 +71,7 @@ sort<br />
  <input type="submit" value="Sort" name="submitted" />
 </p>
 <p>
- Values <?= $submitted ? "sorted by $sort_type" : "unsorted"; ?>:
+ Values <?= isset($_POST['submitted']) ? "sorted by $sort_type" : "unsorted"; ?>:
 </p>
 <ul>
  <?php
@@ -57,3 +82,7 @@ sort<br />
 </ul>
 </form>
 </div>
+<script>
+	 $('input[type="radio"][value="<?= isset($_POST["sort_type"])? $_POST["sort_type"]:"sort" ;?>"]').attr('checked', true);
+</script>
+
