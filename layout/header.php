@@ -15,7 +15,8 @@
  			<li><a href="homework3.php">Home Work 3</a></li>
  			<li><a href="homework4.php">Home Work 4</a>
  			</li>
- 			<li><a href="../btl/web">Bai tap lon</a></li>
+			<li><a href="../module/shopping_card/php/index.php">Shopping Card</a> </li>
+ 			<li><a href="../btl/application">Bai tap lon</a></li>
  		</ul>
     </div><!--#menu-->
  
