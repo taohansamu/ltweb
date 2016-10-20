@@ -15,9 +15,9 @@ function checkLogin($userinfo, $username, $password) {
 
 session_start();
 $sql = 'SELECT `username`,`password` FROM user';
-$result = mysql_query($sql,$connect);
+$result = mysqli_query($connect,$sql);
 $userinfo = array();
-while ($row = mysql_fetch_row($result)) {
+while ($row = mysqli_fetch_row($result)) {
 	$userinfo[$row[0]] = $row[1];
 }
 
@@ -26,7 +26,7 @@ if (!empty($_POST) && !empty($user = $_POST['username']) && !empty($password = $
 		$_SESSION['logged in'] = true;
 		$_SESSION['user'] = $user;
 		$sql = "SELECT `user_id` FROM user WHERE username = '$user'";	
-		$user_id = mysql_fetch_row(mysql_query($sql))[0];
+		$user_id = mysqli_fetch_row(mysqli_query($connect,$sql))[0];
 		$_SESSION['userid'] = $user_id;
 		header('Location: index.php');
 	} else {
@@ -45,7 +45,7 @@ if (!empty($_POST) && !empty($user = $_POST['username']) && !empty($password = $
 		</form>
 		<?php
 	}
-	mysql_close();
+	mysqli_close($connect);
 } 
 else {
 	?>
@@ -61,6 +61,6 @@ else {
 	<input type="submit" value="Log in">
 	</form>
 	<?php
-	mysql_close();
+	mysqli_close($connect);
 }
 ?>

@@ -11,16 +11,16 @@ if (isset($_SESSION['logged in'])) {
 	
 	$sql = "SELECT * FROM orders WHERE user_id = '$user_id' AND product_id = '$prodid'";
 
-	$result = mysql_query($sql);
-	if (mysql_num_rows($result) > 0) {
+	$result = mysqli_query($connect,$sql);
+	if (mysqli_num_rows($result) > 0) {
 		$query = "SELECT `quantity` FROM orders WHERE user_id = '$user_id' AND product_id = '$prodid'";
-		$newquan = mysql_fetch_row(mysql_query($query))[0];
+		$newquan = mysqli_fetch_row(mysqli_query($connect,$query))[0];
 		$newquan+=1;
 		$sql = "UPDATE `orders` SET quantity = '$newquan' WHERE user_id = '$user_id' AND product_id = '$prodid'";
-		mysql_query($sql);
+		mysqli_query($connect,$sql);
 	} else {
 		$query = "INSERT INTO `orders` VALUES ('$user_id','$prodid','1')";
-		mysql_query($query);
+		mysqli_query($connect,$query);
 	}
 
 	print "Product added<br>";
@@ -30,5 +30,5 @@ if (isset($_SESSION['logged in'])) {
 } else {
 	print 'Please <a href = "login.php">Log in</a> to purchase cart';
 }
-mysql_close();
+mysqli_close($connect);
 ?>

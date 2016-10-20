@@ -16,7 +16,7 @@ else {
 	print '<a href="login.php">Log in</a>';
 }
 $sql = 'SELECT `product_name`, `product_id`, `product_description` FROM product';
-$result = mysql_query($sql,$connect);
+$result = mysqli_query($connect,$sql);
 ?>
 <p><font color ="red"><h2>Available Product</h2></font></p>
 <table>
@@ -27,7 +27,7 @@ $result = mysql_query($sql,$connect);
 </tr>
 <?php
 $i = 0;
-while ($row = mysql_fetch_row($result)) {
+while ($row = mysqli_fetch_row($result)) {
 		if ($i%2 == 0) {
 			print '<tr bgcolor="#A9A9A9">';
 			print '<td width="100"><font color="black">';
@@ -47,5 +47,5 @@ while ($row = mysql_fetch_row($result)) {
 		}
 		$i++;
 }
-mysql_close();
+mysqli_close($connect);
 ?>

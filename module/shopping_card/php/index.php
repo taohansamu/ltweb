@@ -1,5 +1,7 @@
+
 <?php
 session_start();
+include ""
 if (!empty($_SESSION['logged in'])) {
 	$user = $_SESSION['user'];
 	print "Welcome ";
